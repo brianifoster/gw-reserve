@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="ui tabular inverted stackable huge menu">
+        <div class="header item">
+            <img class="ui small image" src="./../../assets/logo.png" alt="logo">
+        </div>
+        <a *ngFor="let menuItem of menuItems" [routerLink]="menuItem.url" routerLinkActive="active" class="red item">
+            {{ menuItem.title }}
+        </a>
+        <div class="right menu">
+            <div class="item">
+                <div class="ui red button">
+                    <gw-login>Sign Up</gw-login>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
