@@ -34,4 +34,4 @@ const routes: Route[] = [
 })
 export class RoomRoutingModule { }
 
-export const routingComponents = [ RoomComponent, ListComponent, FormComponent];
+export const routingComponents = [ RoomComponent, ListComponent, FormComponent ];

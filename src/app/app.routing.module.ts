@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 
-import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AboutComponent } from './about/about.component';
+import { NotFoundComponent } from './notfound/notfound.component';
 
 const routes: Route[] = [
     {
+        path: 'welcome',
         component: WelcomeComponent,
-        path: 'welcome'
     },
     {
-        component: AboutComponent,
-        path: 'about'
+        path: 'about',
+        component: AboutComponent
+        
     },
     {
         path: "",
@@ -21,7 +22,7 @@ const routes: Route[] = [
     },
     {
         path: "**",
-        component: FourOhFourComponent
+        component: NotFoundComponent
     }
 ]
 
@@ -31,4 +32,4 @@ const routes: Route[] = [
     exports: [ RouterModule ]
 })
 export class AppRoutingModule {}
-export const routingComponents = [ WelcomeComponent, AboutComponent, FourOhFourComponent ];
+export const routingComponents = [ WelcomeComponent, AboutComponent, NotFoundComponent ];

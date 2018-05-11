@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { INavigationItem } from './../../interfaces/INavigationItem';
 import { RoomService } from '../services/room.service';
 import { Router } from '@angular/router';
+import { IRoom } from '../../interfaces/IRoom';
+
+import { map } from 'rxjs/operators'
 
 @Component({
     selector: 'gw-navigation',
@@ -30,12 +33,20 @@ export class NavigationComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        const roomItems: INavigationItem[] = this._roomService.rooms.map(room => {
-            return {
-                title: room.title,
-                url: 'room/' + room.id
-            };
-        });
-        this.menuItems = [].concat(this.menuItems, roomItems);
+        this._roomService.rooms.pipe(
+            map( (room: IRoom[])  => {
+                const navItems: INavigationItem[] = room.map( eachRoom => {
+                    return {
+                        title: eachRoom.title,
+                        url: 'room/' + eachRoom.id
+                    };
+                })
+            return navItems;
+        }))
+    //  .subscribe(results => {
+        .subscribe(navItems => {
+            this.menuItems = [].concat(this.menuItems, navItems);
+        })
+        
     }
 }
